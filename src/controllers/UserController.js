@@ -40,5 +40,19 @@ module.exports = {
     } catch (error) {
       next(error);
     }
+  },
+
+  async delete(req, res, next) {
+    const { id, } = req.body;
+
+    try {
+
+      await knex('users').where({ id }).del();
+
+      return res.send();
+
+    } catch (error) {
+      next(error)
+    }
   }
 }
