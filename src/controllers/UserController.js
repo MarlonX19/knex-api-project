@@ -24,5 +24,21 @@ module.exports = {
       next(error);
     }
 
+  },
+
+  async update(req, res, next) {
+    const { id, username } = req.body;
+
+
+    try {
+      const results = await knex('users').update({
+        username
+      }).where('id', id)
+
+      return res.send();
+
+    } catch (error) {
+      next(error);
+    }
   }
 }
